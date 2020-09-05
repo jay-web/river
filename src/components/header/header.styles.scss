@@ -1,0 +1,19 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr  0.4fr;
+    font-size: 1.5rem;
+    background-color: rgb(39, 38, 38);
+    padding: .8rem .5rem;
+    // border-radius: .rem;
+
+    a{
+        text-decoration: none;
+        color : white;
+    }
+
+    .menuItem {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+}
