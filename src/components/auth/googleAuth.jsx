@@ -2,47 +2,44 @@ import React from "react";
 import "./googleAuth.styles.scss";
 
 import CustomButton from "../customButton/custom-button";
+import { connect } from "react-redux";
+import {toSignIn, toSignOut, onAuthStateChange} from "../../redux/actions/auth.actions";
 
 class GoogleAuth extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            isSignedIn: null
-        }
-    }
+   
     componentDidMount() {
         window.gapi.load("client:auth2", () => {
             window.gapi.client.init({
                 clientId: "566295050248-ulaapts1m1bqhoto4ooo7iutt0v8ng05.apps.googleusercontent.com",
                 scope: 'email'
             }).then(()  => {
-                this.auth = window.gapi.auth2.getAuthInstance();
-                this.onAuthStatusChange();
-                this.auth.isSignedIn.listen(this.onAuthStatusChange);
+            this.auth = window.gapi.auth2.getAuthInstance();
+            this.onAuthStatusChange();
+            this.auth.isSignedIn.listen(this.onAuthStatusChange);
+           
             })
-        });
-        
+        });  
     }
 
+
     onAuthStatusChange = () => {
-        this.setState({ isSignedIn: this.auth.isSignedIn.get()})
+      
+        this.props.onAuthStateChange(this.auth.isSignedIn.get());
     }
 
     userSignIn = () => {
-        console.log("tesing");
-        this.auth.signIn();
+        this.props.toSignIn(this.auth);
     }
 
     userSignOut= () => {
-        console.log("tesing");
-        this.auth.signOut();
+   
+        this.props.toSignOut(this.auth);
     }
 
     renderAuthButton() {
-        if(this.state.isSignedIn === null){
+        if(this.props.isSignedIn === null){
             return null;
-        }else if(this.state.isSignedIn){
+        }else if(this.props.isSignedIn){
             return <CustomButton title="Sign Out"   onClick={this.userSignOut} />
            
         }else {
@@ -51,10 +48,19 @@ class GoogleAuth extends React.Component {
     }
 
     render() {
+        
         return (
             <div className="color">{this.renderAuthButton()} </div>
         )
     }
 }
 
-export default GoogleAuth;
+const mapStateToProps = (state) => {
+    console.log({state});
+    return { isSignedIn: state.user.isSignedIn}
+}
+export default connect(mapStateToProps, {
+    toSignIn: toSignIn,
+    toSignOut: toSignOut,
+    onAuthStateChange: onAuthStateChange
+})(GoogleAuth);
