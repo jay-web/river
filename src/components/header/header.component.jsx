@@ -3,7 +3,7 @@ import {Link } from "react-router-dom";
 import "./header.styles.scss";
 import GoogleAuth from "../auth/googleAuth";
 
-import { connect } from "react-redux";
+
 
 
 class Header extends React.Component  {

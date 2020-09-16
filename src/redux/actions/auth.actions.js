@@ -2,8 +2,8 @@
 
 
 export const toSignIn = (auth) => {
-    return function getAuth(dispatch) {
-            auth.signIn();
+    return async function getAuth(dispatch) {
+            await auth.signIn();
             dispatch({
                 type: "SIGN_IN", 
                 payload:  {
@@ -17,8 +17,8 @@ export const toSignIn = (auth) => {
 }
 
 export const toSignOut = (auth) => {
-    return function getAuth(dispatch) {
-                auth.signOut();
+    return async function getAuth(dispatch) {
+               await auth.signOut();
                dispatch({
                    type: "SIGN_OUT", 
                    payload:  {
@@ -31,10 +31,13 @@ export const toSignOut = (auth) => {
     }
 }
 
-export const onAuthStateChange = (isSignedIn) => {
+export const onAuthStateChange = (isSignedIn, id) => {
     return  {
         type: "AUTH_STATE_CHANGE", 
-        payload:  isSignedIn
+        payload:  {
+            isSignedIn : isSignedIn ,
+            userId: id
+        }
     }
     
 }

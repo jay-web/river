@@ -17,13 +17,14 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
         case "SIGN_OUT":
             return {
                 ...state,
-                isSignedIn: action.payload,
+                isSignedIn: action.payload.isSignedIn,
                 userId: action.payload.userId
             }
         case "AUTH_STATE_CHANGE":
             return {
                 ...state,
-                isSignedIn: action.payload
+                isSignedIn: action.payload.isSignedIn,
+                userId: action.payload.userId
             }
           
         default:
