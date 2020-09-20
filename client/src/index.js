@@ -6,7 +6,7 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 import "./index.css";
-import App from "./app";
+import App from "./App";
 import CombineReducers from "../src/redux/root";
 
 
