@@ -4,6 +4,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 
 
 class StreamCreate extends React.Component {
+    // * Below input, label and meta we are receiving through redux form library
     renderInput = ({ input, label, meta }) => {
         console.log({meta});
         return (
