@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter, Route } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/header/header.component";
 import StreamShow from "./components/streams/streamShow";
 import StreamList from "./components/streams/streamList";
