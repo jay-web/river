@@ -9,7 +9,6 @@ import { CreateStream } from "../../redux/actions/streams.actions";
 class StreamCreate extends React.Component {
     // * Below input, label and meta we are receiving through redux form library
     renderInput = ({ input, label, meta }) => {
-        console.log({meta});
         return (
                 <Form.Group >
                     <Form.Label>{label}</Form.Label>

@@ -1,0 +1,14 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "JSON server to run stream api of river projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server -p 3001 -w db.json"
+  },
+  "author": "jay sharma",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.16.1"
+  }
+}
