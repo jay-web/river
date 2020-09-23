@@ -1,6 +1,6 @@
 body {
     font-size: 62.5%;
-    font-family: 'Rancho', cursive;
+    font-family: 'Rancho', cursive !important ;
     padding: 0px;
     margin:0px;
 }
