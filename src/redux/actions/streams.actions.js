@@ -1,4 +1,5 @@
 import StreamAxios from "../../axios/streamAxios";
+import history from "../../history";
 import {
     CREATE_STREAM,
     FETCH_STREAMS,
@@ -15,6 +16,7 @@ export const CreateStream = (formValues) => {
         const response = await StreamAxios.post("/streams", {...formValues, userId } );
 
         dispatch({ type : CREATE_STREAM, payload : response.data});
+        history.push("/");
     }
 }
 

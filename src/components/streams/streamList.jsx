@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { FetchStreams } from "../../redux/actions/streams.actions";
 import { Card, CardGroup, Button } from "react-bootstrap";
+import "./stream.styles.css";
 
 class StreamList extends React.Component {
     componentDidMount(){
@@ -37,17 +39,32 @@ class StreamList extends React.Component {
         }
        
     }
+
+    renderCreateButton = () => {
+        if(this.props.isSignedIn){
+            return (
+                <div className="createButton">
+                    <Link 
+                        to="/streams/new" 
+                        style={{  color:"white", textDecoration:"none", }}> Create Stream</Link>
+                </div>
+            )
+        }
+    }
     render(){
         
         return (
-           <div>
-               <CardGroup>
+           <div >
+               
+               <CardGroup className="listBox">
                {
                    this.props.streams.map((stream) => {
                        return this.renderStreamCard(stream)
                    })
                }
                </CardGroup>
+            
+               {this.renderCreateButton()}
            </div>
         )
     }
@@ -58,7 +75,8 @@ const mapStateToProp = (state) => {
     
     return { 
         streams : Object.values(state.streams),
-        currentUserId : state.user.userId
+        currentUserId : state.user.userId,
+        isSignedIn: state.user.isSignedIn
     }
 }
 
