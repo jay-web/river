@@ -10,8 +10,9 @@ import {
 
  // * Action for create new stream
 export const CreateStream = (formValues) => {
-    return async function(dispatch) {
-        const response = await StreamAxios.post("/streams", formValues);
+    return async function(dispatch, getState) {
+        const userId = getState().user.userId;
+        const response = await StreamAxios.post("/streams", {...formValues, userId } );
 
         dispatch({ type : CREATE_STREAM, payload : response.data});
     }
