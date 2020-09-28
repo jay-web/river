@@ -31,8 +31,13 @@ class StreamList extends React.Component {
         if(stream.userId === this.props.currentUserId){
             return (
                 <div>
-                    <Button style={{ marginRight: '1rem' }} variant="primary">Edit</Button>
-                    <Button variant="danger">Delete</Button>
+                    <Link 
+                        to={`/streams/edit/${stream.id}`}
+                        className="editButton"
+                        >Edit</Link>
+                    <Link 
+                        to="/streams/delete/:id" 
+                        className="deleteButton">Delete</Link>
                 </div>
                
             )

@@ -11,3 +11,19 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(250px, auto);
 }
+
+.editButton {
+  
+    margin-right:1rem;
+    background-color: #167bff;
+    padding: .2rem .9rem;
+    color:white;
+}
+
+.deleteButton {
+  
+    margin-right:1rem;
+    background-color: #ac272f;
+    padding: .2rem .9rem;
+    color:white;
+}
