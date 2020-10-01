@@ -1,26 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FetchStream } from "../../redux/actions/streams.actions";
+import { FetchStreams, EditStream } from "../../redux/actions/streams.actions";
+
+import StreamForm from "./streamForm";
 
 class StreamEdit extends React.Component {
   componentDidMount() {
-    this.props.FetchStream(this.props.match.params.id);
+    
+    this.props.FetchStreams();
+  }
+  onSubmit = (formValues) => {
+    
+    this.props.EditStream(this.props.match.params.id, formValues);
   }
   render() {
-      
-      if(!this.props.stream[0]){
+      const {stream } = this.props;
+      if(!this.props.stream){
           return <div>Loading....</div>;
       }
-     console.log(this.props.stream[0]);
-    return <div> {this.props.stream.title}</div>;
+   
+    return (
+      <div> 
+        <h3>Edit Stream</h3>
+        <StreamForm 
+          onSubmit={this.onSubmit} 
+          initialValues={{title: stream.title, description : stream.description}} />
+      </div>
+    )
   }
 }
 
 const mapStateToProp = (state, getProps) => {
-  let streams = Object.values(state.streams);
-  let streamToEdit = streams.filter((stream) => {
-    return stream.id == getProps.match.params.id;
-  });
-  return { stream: streamToEdit };
+
+  return { stream: state.streams[getProps.match.params.id -1] };
 };
-export default connect(mapStateToProp, {FetchStream})(StreamEdit);
+export default connect(mapStateToProp, {FetchStreams, EditStream})(StreamEdit);

@@ -29,9 +29,15 @@
     },
     {
       "title": "programmatic navigation",
-      "description": "navigating using custom history object of react router dom",
+      "description": "navigating using custom history object of outer dom",
       "userId": "117626059924910542969",
       "id": 6
+    },
+    {
+      "title": "Reuse code ",
+      "description": "Editing this stream using restful patch requrestuu",
+      "userId": "117626059924910542969",
+      "id": 7
     }
   ]
 }

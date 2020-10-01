@@ -33,7 +33,7 @@ export const FetchStreams = () => {
 export const FetchStream = (id) => {
     return async function(dispatch) {
         const response = await StreamAxios.get(`/streams/${id}`);
-
+      
         dispatch({ type: FETCH_STREAM, payload : response.data});
     }
 }
@@ -41,9 +41,10 @@ export const FetchStream = (id) => {
 // * Action to Edit Single stream
 export const EditStream = (id, editValues) => {
     return async function(dispatch) {
-        const response = await StreamAxios.put(`/streams/${id}`, editValues);
+        const response = await StreamAxios.patch(`/streams/${id}`, editValues);
 
         dispatch({ type: EDIT_STREAM, payload: response.data});
+        history.push('/');
     }
 }
 
