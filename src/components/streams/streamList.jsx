@@ -36,7 +36,7 @@ class StreamList extends React.Component {
                         className="editButton"
                         >Edit</Link>
                     <Link 
-                        to="/streams/delete/:id" 
+                        to={`/streams/delete/${stream.id}`} 
                         className="deleteButton">Delete</Link>
                 </div>
                
@@ -77,7 +77,7 @@ class StreamList extends React.Component {
 }
 
 const mapStateToProp = (state) => {
-    
+   
     return { 
         streams : Object.values(state.streams),
         currentUserId : state.user.userId,

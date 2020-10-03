@@ -12,7 +12,7 @@ const StreamReducer =  (state = {}, action) => {
     switch(action.type){
         case FETCH_STREAM :
             return {
-                ...state,
+                // ...state,
                 [action.payload.id]: action.payload
             }
         case CREATE_STREAM :
@@ -28,7 +28,7 @@ const StreamReducer =  (state = {}, action) => {
         case FETCH_STREAMS:
             return {
                 ...state,
-                ...action.payload
+                ..._.mapKeys(action.payload, 'id')
             }
         case DELETE_STREAM:
             return _.omit(state, action.payload)

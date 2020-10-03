@@ -54,5 +54,6 @@ export const DeleteStream = (id) => {
         await StreamAxios.delete(`/streams/${id}`);
 
         dispatch({type: DELETE_STREAM, payload: id});
+        history.push('/');
     }
 }

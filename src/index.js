@@ -11,7 +11,7 @@ import App from "./App";
 import CombineReducers from "../src/redux/root";
 
 
-const middleware = [thunk];
+const middleware = [thunk, logger];
 
 
 

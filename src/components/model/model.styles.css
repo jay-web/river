@@ -1,0 +1,28 @@
+.model{
+   
+    background-color:transparent;
+    position: absolute;
+    height: 90vh;
+    width: 100vw;
+    top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+
+.model-body {
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: 1rem 2rem;
+    border: 2px solid grey;
+    border-radius: 5px;
+    
+    
+}
+
+button {
+    margin-right: 1rem;
+}
