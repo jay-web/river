@@ -27,3 +27,10 @@
     padding: .2rem .9rem;
     color:white;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    cursor: pointer;
+}
